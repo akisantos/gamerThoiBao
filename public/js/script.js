@@ -155,16 +155,16 @@ $(window).resize(function(){
 
 // HeaderLogo
 $(".homeLogo").click(()=>{
-    window.location.href = "./index.html";
+    window.location.href = "./";
 })
 
 
 $("#newsRightHeader").click(()=>{
-    window.location.href = "./news.html";
+    window.location.href = "./news";
 })
 
 $("#loginRightHeader").click(()=>{
-    window.location.href = "./login.html";
+    window.location.href = "./login";
 })
 
 

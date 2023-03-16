@@ -141,7 +141,7 @@ html{
     top: 100%;
     left: 0;
     border-radius: 4px;
-    background-image: url(/brush.svg);
+    background-image: url(../img/brush.svg);
     background-repeat: no-repeat;
     background-size: 100% 4px;
     background-position: 100% 0;
