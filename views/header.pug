@@ -338,7 +338,10 @@ block header
           input#searchInp(type='text' name='' placeholder='TÌM KIẾM')
           button.submitButton
             i.fas.fa-search
-        a.signInBtn(href='./login') ĐĂNG NHẬP
+        if !user
+          a.signInBtn(href='./login') ĐĂNG NHẬP
+        else 
+          a.signInBtn(href='#') Xin chào #{user.name}
     .rightHeaderWrapper
       .menuIcon
         svg(width='32' height='32' viewbox='0 0 32 32')

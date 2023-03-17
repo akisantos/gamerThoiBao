@@ -39,17 +39,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 
-app.use('/news',newsRouter);
 app.use('/register', registerRouter)
 app.use('/auth',authRouter)
-app.use('/refresh',refreshRouter)
 app.use('/logout',logoutRouter)
+app.use('/refresh',refreshRouter)
+app.use('/news',newsRouter);
+
+
 
 //Authorization below this line
 app.use(verifyJWT);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

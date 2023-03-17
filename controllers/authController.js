@@ -1,3 +1,7 @@
+
+
+const AccountDAO = require('../DAO/AccountDAO');
+
 const userDB = {
     users : require('../models/users.json'),
     setUsers: function (data) { this.users = data}
@@ -12,21 +16,29 @@ const fsPromises = require('fs').promises;
 
 const handleLogin = async (req,res) => {
     const {user, pwd} = req.body;
-
-    if (!user || !pwd) return res.status(404).json({msg:'usrname and password are required.'});
+    
+    if (!user || !pwd) return res.status(404);
 
     const foundUser = userDB.users.find(person => person.username === user);
 
-    if (!foundUser) return res.sendStatus(401); //Unauthorized  
+    if (!foundUser){
+        return res.status(401);//Unauthorized  
+    } 
 
     //evaluate pass
     const match = await bcrypt.compare(pwd, foundUser.password);
     if (match){
+        const roles = Object.values(foundUser.roles);
+
         //create JWTs
         const accessToken = jwt.sign(
-            { "username": foundUser.username},
+            { "UserInfo":{
+                "username": foundUser.username},
+                "roles": roles
+            
+            },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '60m'}
+            { expiresIn: '30s'}
         );
 
         const refreshToken = jwt.sign(
@@ -44,10 +56,21 @@ const handleLogin = async (req,res) => {
             JSON.stringify(userDB.users)
         );
         res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24*60*60*1000})
-        res.json({ accessToken})
+        res.header('Authorization', 'Bearer '+ accessToken);
+        res.status(200).json({ accessToken });
     }else{
-        res.sendStatus(401);
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
 }
 
-module.exports = { handleLogin }
+const loginGet = (req, res) =>{
+    res.render('login');
+}
+
+// const logoutGet = (req, res) =>{
+//     res.clearCookie('jwt',{httpOnly: true});
+//     res.redirect('/')
+// }
+
+module.exports = { handleLogin,loginGet }

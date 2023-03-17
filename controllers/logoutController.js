@@ -16,8 +16,8 @@ const handleLogout = async (req,res) => {
     const foundUser = userDB.users.find(person => person.username === user);
 
     if (!foundUser) {
-        res.clearCookie('jwt', {httpOnly: true})
-        return res.sendStatus(204);
+        res.clearCookie('jwt',{httpOnly: true});
+        res.redirect('/login');
     }
 
     const otherUsers = userDB.users.filter(person => person.refreshToken !== foundUser.refreshToken);
@@ -31,6 +31,7 @@ const handleLogout = async (req,res) => {
 
     res.clearCookie('jwt',{httpOnly: true});
     res.sendStatus(204);
+
 }
 
 module.exports = { handleLogout }
