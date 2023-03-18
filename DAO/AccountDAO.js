@@ -51,12 +51,10 @@ exports.registerNewAccount  = async (acc) =>{
     let insertData = AccountSchema.validateData(modiFiedAcc);
 
     const {request, insertedFieldNameStr, insertValueStr} = dbUtils.getInsertQuery(AccountSchema.schema, dbConfig.db.pool.request(), insertData); 
-    //console.log(insertedFieldNameStr,insertValueStr)
-    //let query = `set identity_insert ${AccountSchema.schemaName} ON INSERT INTO ${AccountSchema.schemaName}` + '('+ insertedFieldNameStr +') values (' + insertValueStr + ')';
+    
 
-
-    let query = `set identity_insert ${AccountSchema.schemaName} ON INSERT INTO ${AccountSchema.schemaName}`;
-    query += '(_login, _password, _role, _active) values' + '("' +insertData._login +'","' + insertData._password +'",'+ insertData._role+','+ insertData._active +')'
+    let query = `INSERT INTO ${AccountSchema.schemaName}`;
+    query += "(_login, _password, _role, _active) values" + "('" +insertData._login +"','" + insertData._password +"'," + insertData._role+','+ insertData._active +')'
     console.log(query);
     let res = await request.query(query);
     return res.recordsets;

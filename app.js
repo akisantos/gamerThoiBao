@@ -49,7 +49,7 @@ app.use('/news',newsRouter);
 
 
 //Authorization below this line
-app.use(verifyJWT);
+// app.use(verifyJWT);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 

@@ -5,8 +5,6 @@ const userDB = {
 
 
 const AccountDAO = require('../DAO/AccountDAO');
-const fsPromises = require('fs').promises;
-const path = require('path');
 const bcrypt = require('bcrypt');
 
 const handleNewUser = async (req,res)=>{
@@ -35,12 +33,6 @@ const handleNewUser = async (req,res)=>{
 
         const addedAcc = await AccountDAO.registerNewAccount(newUser);
         console.log(addedAcc)
-
-        // await fsPromises.writeFile(
-        //     path.join(__dirname,'..','models','users.json'),
-        //     JSON.stringify(userDB.users)
-
-        // )
 
         res.status(201).json({'success': `New user ${user} created`})
     }catch (err){

@@ -1,1 +1,19 @@
-[{"username":"aki2","password":"$2b$10$uTGu6OF5sI6Ys.crHbzLuuIEKVih5kWOKPlMpeoZ3bKNz/onwNlWW","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFraTIiLCJpYXQiOjE2NzkwNTc3NjksImV4cCI6MTY3OTE0NDE2OX0.rIAaIBSZLgZ3e0Oq0KJt08FSjyojgzLMLh6s_x7feMI"},{"_login":"accdb","_roles":{"User":2023},"_password":"$2b$10$eLrAHLAyazXhg961WQnJ6OZRrA/6uK0gCnH6NXisKmUk30RZ3l9Bi","_active":1},{"_login":"accdb","_roles":{"User":2023},"_password":"$2b$10$4A2EFRgvjjhrxZ96K0joI.d1CaVGqAGQGrxVhDsfkNWOlnwnJHhC.","_active":1}]
+[
+  {
+    "username": "aki2",
+    "password": "$2b$10$uTGu6OF5sI6Ys.crHbzLuuIEKVih5kWOKPlMpeoZ3bKNz/onwNlWW",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFraTIiLCJpYXQiOjE2NzkwNTc3NjksImV4cCI6MTY3OTE0NDE2OX0.rIAaIBSZLgZ3e0Oq0KJt08FSjyojgzLMLh6s_x7feMI"
+  },
+  {
+    "_login": "accdb",
+    "_roles": { "User": 2023 },
+    "_password": "$2b$10$eLrAHLAyazXhg961WQnJ6OZRrA/6uK0gCnH6NXisKmUk30RZ3l9Bi",
+    "_active": 1
+  },
+  {
+    "_login": "accdb",
+    "_roles": { "User": 2023 },
+    "_password": "$2b$10$4A2EFRgvjjhrxZ96K0joI.d1CaVGqAGQGrxVhDsfkNWOlnwnJHhC.",
+    "_active": 1
+  }
+]
